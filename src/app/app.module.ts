@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { PsProductsComponent } from './components/ps-products/ps-products.compon
 import { PsProductCardComponent } from './components/ps-product-card/ps-product-card.component';
 import { PsProductCardReviewComponent } from './components/ps-product-card-review/ps-product-card-review.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { SecurityComponent } from './security/security/security.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     PsProductsComponent,
     PsProductCardComponent,
     PsProductCardReviewComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
