@@ -4,18 +4,23 @@
       class="bd-placeholder-img card-img-top"
       width="100%"
       height="225"
-      src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.3/w_465,c_limit/640b7af7-ac79-4af0-8fb9-d3b999d15abe/free-metcon-4-womens-training-shoes-lhQKzn.png"
+      src="{{ product.image }}"
     />
 
     <div class="card-body">
       <p class="card-text" style="margin-bottom: 0; font-weight: 500">
-        Women's Running Shoes Non Slip Athletic Tennis Walking Blade Type
+        {{ product.title }}
       </p>
-      <p style="padding: 0; margin: 0">Nike</p>
-      <h4 class="card-text" style="display: inline-block">$25</h4>
-      <h6 class="card-text" style="display: inline-block; vertical-align: top">
+      <p style="padding: 0; margin: 0">{{ product.brand }}</p>
+      <h4 class="card-text" style="display: inline-block">
+        {{ product.minPrice | currency: "CAD" }}
+        <span *ngIf="product.minPrice != product.maxPrice">
+          - {{ product.maxPrice | currency: "CAD" }}</span
+        >
+      </h4>
+      <!-- <h6 class="card-text" style="display: inline-block; vertical-align: top">
         06
-      </h6>
+      </h6> -->
       <div>
         <b><app-ps-product-card-review></app-ps-product-card-review></b>
       </div>

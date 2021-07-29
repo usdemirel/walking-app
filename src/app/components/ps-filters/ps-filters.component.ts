@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Categories } from 'src/app/model/categories';
+import { PSFiltersService } from 'src/app/services/ps-filters.service';
 
 @Component({
   selector: 'app-ps-filters',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PsFiltersComponent implements OnInit {
 
-  constructor() { }
+  categories: Categories[] = [];
+
+  constructor(private filtersService: PSFiltersService) { }
 
   ngOnInit(): void {
+    console.log("init")
+    this.getCategories();
+  }
+
+  getCategories(){
+    this.filtersService.getCategories().subscribe( data => {
+      this.categories = data;
+      console.log("data " + data);
+    });
   }
 
 }

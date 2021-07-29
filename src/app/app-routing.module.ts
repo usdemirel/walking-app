@@ -21,6 +21,10 @@ const routes: Routes = [
     component: ProductDescriptionComponent
   },
   {
+    path: ':category',
+    component: ProductSearchComponent
+  },
+  {
     path: '',
     component: ProductSearchComponent
   },
