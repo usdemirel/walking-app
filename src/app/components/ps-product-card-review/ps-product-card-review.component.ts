@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ps-product-card-review',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PsProductCardReviewComponent implements OnInit {
 
+  @Input() reviewCount:number;
+  @Input() rating:number;
+  ratingImage: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.ratingImage = this.rating.toFixed();
   }
 
 }

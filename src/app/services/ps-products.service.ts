@@ -15,6 +15,16 @@ export class PSProductsService {
     return this.http.get<Pagenation>("http://localhost:8090/api/productdescriptions/public");
   }
 
+  getProductsByCategory(category: string){
+    return this.http.get<Pagenation>("http://localhost:8090/api/productdescriptions/" + category + "/public");
+  }
+
+  getProductsByQueryParam(param: string){
+    return this.http.get<Pagenation>("http://localhost:8090/api/productdescriptions/public" + param);
+  }
+
+  // /productdescriptions/kids/public
+
   
 
 

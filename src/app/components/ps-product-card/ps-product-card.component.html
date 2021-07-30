@@ -22,7 +22,12 @@
         06
       </h6> -->
       <div>
-        <b><app-ps-product-card-review></app-ps-product-card-review></b>
+        <b
+          ><app-ps-product-card-review
+            [reviewCount]="product.reviewCount"
+            [rating]="product.rating"
+          ></app-ps-product-card-review
+        ></b>
       </div>
     </div>
   </div>

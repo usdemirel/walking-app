@@ -10,6 +10,7 @@ export class HMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("> > > > > > > INIT >>> >>>> >>>>> ");
   }
 
 }

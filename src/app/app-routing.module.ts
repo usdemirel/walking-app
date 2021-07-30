@@ -21,7 +21,11 @@ const routes: Routes = [
     component: ProductDescriptionComponent
   },
   {
-    path: ':category',
+    path: 'products/:category',
+    component: ProductSearchComponent
+  },
+  {
+    path: 'search',
     component: ProductSearchComponent
   },
   {
