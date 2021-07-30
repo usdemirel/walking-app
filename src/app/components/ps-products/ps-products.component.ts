@@ -19,16 +19,14 @@ export class PsProductsComponent implements OnChanges {
   ngOnChanges(): void {
     console.log("about to get products")
     console.log(this.category);
-    if(this.category==null){
+    
       if(this.result!=null){
         this.getProductsByQueryParam(this.result);
-      }else{
-        this.getProducts();
-      }
-    }else{
+      }else if(this.category!=null && this.category!="All"){
       this.getProductsByCategory(this.category);
-    }
-    
+      }else{
+          this.getProducts();
+      }
   }
 
   getProducts(){

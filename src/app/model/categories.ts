@@ -1,8 +1,8 @@
 export interface Categories {
-    id: number;
+    id?: number;
     category: string;
-    image: string;
-    active: boolean;
+    image?: string;
+    active?: boolean;
 
     
 }
