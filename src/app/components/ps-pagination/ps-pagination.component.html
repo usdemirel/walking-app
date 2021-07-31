@@ -1,0 +1,17 @@
+<div>
+  <span *ngFor="let item of pages; let i = index">
+    <!-- <a
+      [routerLink]="['/search']"
+      [queryParams]="{ page: 'i' }"
+      routerLinkActive="active"
+      >{{ i + 1 }}</a
+    > -->
+    <!-- <button (click)="goToPage($event)">{{ i + 1 }}</button> -->
+
+    <input
+      type="button"
+      value="{{ i + 1 }}"
+      (click)="goToPage($event)"
+    /> </span
+  ><span>[page:{{ pagination.number + 1 }}]</span>
+</div>

@@ -19,6 +19,7 @@ import { PsProductCardComponent } from './components/ps-product-card/ps-product-
 import { PsProductCardReviewComponent } from './components/ps-product-card-review/ps-product-card-review.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SecurityComponent } from './security/security/security.component';
+import { PsPaginationComponent } from './components/ps-pagination/ps-pagination.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SecurityComponent } from './security/security/security.component';
     PsProductCardComponent,
     PsProductCardReviewComponent,
     PageNotFoundComponent,
-    SecurityComponent
+    SecurityComponent,
+    PsPaginationComponent
   ],
   imports: [
     BrowserModule,
