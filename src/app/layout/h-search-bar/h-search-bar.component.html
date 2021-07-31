@@ -1,5 +1,5 @@
 <div class="container" style="min-width: 800px">
-  <form class="col-11" [routerLink]="['/search']">
+  <!-- <form class="col-11" [routerLink]="['/search']">
     <tr>
       <td class="col-8 bg-light">
         <input
@@ -16,5 +16,23 @@
         </button>
       </td>
     </tr>
-  </form>
+  </form> -->
+
+  <tr>
+    <td class="col-8 bg-light">
+      <input
+        class="form-control mr-sm-2"
+        type="text"
+        [(ngModel)]="title"
+        (change)="onChange()"
+        placeholder="Search"
+        aria-label="Search"
+      />
+    </td>
+    <td class="col-1 bg-light">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </td>
+  </tr>
 </div>

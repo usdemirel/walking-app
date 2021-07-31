@@ -1,8 +1,8 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categories } from 'src/app/model/categories';
 import { PSFiltersService } from 'src/app/services/ps-filters.service';
-
 
 @Component({
   selector: 'app-ps-filters',
@@ -11,19 +11,21 @@ import { PSFiltersService } from 'src/app/services/ps-filters.service';
 })
 export class PsFiltersComponent implements OnInit {
 
-  category;
+  category:string;
   result:string;
   minPrice:number;
   maxPrice:number;
+  title:string;
   categories: Categories[] = [{"category":"All"}];
 
-  constructor(private filtersService: PSFiltersService, private router: Router) {
+  constructor(private filtersService: PSFiltersService, private router: Router, private route: ActivatedRoute) {
     this.category="All"
   }
 
   appendParams(){
     this.result = ('?'
     + (this.category?"category="+ this.category :"")
+    + (this.title?"&title="+this.title:"")
     + (this.minPrice?"&minPrice="+this.minPrice:"")
     + (this.maxPrice?"&maxPrice="+this.maxPrice:"")
     );
@@ -32,6 +34,10 @@ export class PsFiltersComponent implements OnInit {
 
   filterChanged(){
     console.log(this.minPrice +" " + this.maxPrice + " " + this.category);
+    this.route.queryParams.subscribe(data =>{
+      console.log("++++" + data.title);
+      this.title=data.title;
+    })
     this.appendParams();
     this.router.navigateByUrl('/search'+this.result);
   }
