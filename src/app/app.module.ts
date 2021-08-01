@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { SecurityComponent } from './security/security/security.component';
 import { PsPaginationComponent } from './components/ps-pagination/ps-pagination.component';
 import { JwtClientService } from './services/jwt-client.service';
+import { AuthGuard } from './services/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -45,9 +48,13 @@ import { JwtClientService } from './services/jwt-client.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [JwtClientService], //I added JwtClientService manually..
+  providers: [JwtClientService,AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }], //I added JwtClientService manually..
   bootstrap: [AppComponent]
 })
 export class AppModule { }

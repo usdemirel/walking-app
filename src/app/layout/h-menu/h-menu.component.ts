@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtClientService } from 'src/app/services/jwt-client.service';
 
 @Component({
   selector: 'app-h-menu',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public jwtService: JwtClientService) { }
 
   ngOnInit(): void {
     console.log("> > > > > > > INIT >>> >>>> >>>>> ");

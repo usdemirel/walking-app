@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtClientService } from 'src/app/services/jwt-client.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SigninComponent implements OnInit {
 
   siginUserData: {email?:string; password?:string;} = {};
 
-  constructor(private http: HttpClient, private jwtService: JwtClientService) { }
+  constructor(private http: HttpClient, private jwtService: JwtClientService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +21,11 @@ export class SigninComponent implements OnInit {
     console.log("sign in user");
     console.log(this.siginUserData);
     this.jwtService.generateToken(this.siginUserData).subscribe(
-      res => console.log(res),
+      res => {
+        console.log("res: " + res.token);
+        localStorage.setItem('token',res.token);
+        this.router.navigate(['/search']);
+      },
       err => console.log(err)
     )
   }

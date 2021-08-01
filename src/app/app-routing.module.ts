@@ -5,6 +5,7 @@ import { ProductDescriptionComponent } from './pages/product-description/product
 import { ProductSearchComponent } from './pages/product-search/product-search.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'product/:id',
-    component: ProductDescriptionComponent
+    component: ProductDescriptionComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'products/:category',

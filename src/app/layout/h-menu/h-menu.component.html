@@ -8,6 +8,25 @@
       <div class="d-flex justify-content-end p-2">
         <span>Hello, Serkan</span>
         <nav class="my-2 my-md-0 mr-md-3">
+          <a
+            class="p-2 text-dark"
+            *ngIf="!jwtService.loggedIn()"
+            routerLink="/signin"
+            >Login</a
+          >
+          <a
+            class="p-2 text-dark"
+            *ngIf="!jwtService.loggedIn()"
+            routerLink="/register"
+            >Register</a
+          >
+          <a
+            class="p-2 text-dark"
+            *ngIf="jwtService.loggedIn()"
+            routerLink="/register"
+            (click)="jwtService.logoutUser()"
+            >Sign Out</a
+          >
           <a class="p-2 text-dark" href="#">Account</a>
           <a class="p-2 text-dark" href="#">Orders</a>
           <a class="p-2 text-dark" href="#">Cart(1)</a>
