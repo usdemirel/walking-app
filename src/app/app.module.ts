@@ -20,6 +20,7 @@ import { PsProductCardReviewComponent } from './components/ps-product-card-revie
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SecurityComponent } from './security/security/security.component';
 import { PsPaginationComponent } from './components/ps-pagination/ps-pagination.component';
+import { JwtClientService } from './services/jwt-client.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { PsPaginationComponent } from './components/ps-pagination/ps-pagination.
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [JwtClientService], //I added JwtClientService manually..
   bootstrap: [AppComponent]
 })
 export class AppModule { }
