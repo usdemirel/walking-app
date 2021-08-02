@@ -6,7 +6,9 @@
     </div>
     <div class="col-8">
       <div class="d-flex justify-content-end p-2">
-        <span>Hello, Serkan</span>
+        <span *ngIf="jwtService.loggedIn()"
+          >Hello, {{ jwtService.user?.firstName }}</span
+        >
         <nav class="my-2 my-md-0 mr-md-3">
           <a
             class="p-2 text-dark"
@@ -20,6 +22,12 @@
             routerLink="/register"
             >Register</a
           >
+
+          <a class="p-2 text-dark" (click)="jwtService.logoutUser()" href="#"
+            >Account</a
+          >
+          <a class="p-2 text-dark" href="#">Orders</a>
+          <a class="p-2 text-dark" href="#">Cart(1)</a>
           <a
             class="p-2 text-dark"
             *ngIf="jwtService.loggedIn()"
@@ -27,9 +35,6 @@
             (click)="jwtService.logoutUser()"
             >Sign Out</a
           >
-          <a class="p-2 text-dark" href="#">Account</a>
-          <a class="p-2 text-dark" href="#">Orders</a>
-          <a class="p-2 text-dark" href="#">Cart(1)</a>
         </nav>
       </div>
     </div>

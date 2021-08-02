@@ -19,7 +19,6 @@ import { PsProductsComponent } from './components/ps-products/ps-products.compon
 import { PsProductCardComponent } from './components/ps-product-card/ps-product-card.component';
 import { PsProductCardReviewComponent } from './components/ps-product-card-review/ps-product-card-review.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { SecurityComponent } from './security/security/security.component';
 import { PsPaginationComponent } from './components/ps-pagination/ps-pagination.component';
 import { JwtClientService } from './services/jwt-client.service';
 import { AuthGuard } from './services/auth.guard';
@@ -41,7 +40,6 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     PsProductCardComponent,
     PsProductCardReviewComponent,
     PageNotFoundComponent,
-    SecurityComponent,
     PsPaginationComponent
   ],
   imports: [

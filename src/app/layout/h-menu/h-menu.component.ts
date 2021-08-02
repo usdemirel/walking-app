@@ -8,10 +8,19 @@ import { JwtClientService } from 'src/app/services/jwt-client.service';
 })
 export class HMenuComponent implements OnInit {
 
-  constructor(public jwtService: JwtClientService) { }
+  constructor(public jwtService: JwtClientService) {
+    if(this.jwtService.loggedIn()){
+      console.log("Yes, logged in (-)(-)(-)(-)");
+      try{
+        this.jwtService.getUserDetails();
+      }catch(err){
+        console.log("EEEEEEEE error: " + err);
+      }
+    } 
+   }
 
   ngOnInit(): void {
-    console.log("> > > > > > > INIT >>> >>>> >>>>> ");
+    
   }
 
 }

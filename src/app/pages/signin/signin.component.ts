@@ -24,9 +24,12 @@ export class SigninComponent implements OnInit {
       res => {
         console.log("res: " + res.token);
         localStorage.setItem('token',res.token);
+        this.jwtService.getUserDetails();
         this.router.navigate(['/search']);
       },
-      err => console.log(err)
+      err => {
+        console.log(err);
+      } 
     )
   }
 
