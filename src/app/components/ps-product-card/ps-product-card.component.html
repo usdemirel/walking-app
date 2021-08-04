@@ -9,7 +9,11 @@
 
     <div class="card-body">
       <p class="card-text" style="margin-bottom: 0; font-weight: 500">
-        {{ product.title }}
+        <a
+          routerLink="/product/{{ product.id }}"
+          routerLinkActive="router-link-active"
+          >{{ product.title + " " + product.id }}</a
+        >
       </p>
       <p style="padding: 0; margin: 0">{{ product.brand }}</p>
       <h4 class="card-text" style="display: inline-block">

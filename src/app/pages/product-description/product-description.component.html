@@ -1,40 +1,64 @@
-<div class="container">
-  <div class="card shadow-sm">
-    <img
-      height="25%"
-      width="25%"
-      src="{{ product.productDescription.image }}"
-    />
+<div *ngIf="product" class="container">
+  <div class="d-flex flex-row">
+    <div class="p-2 image">
+      <img width="100%" src="{{ product?.productDescription?.image }}" />
+    </div>
 
-    <div class="card-body">
+    <div class="p-2">
       <p class="card-text" style="margin-bottom: 0; font-weight: 500">
-        {{ product.productDescription.title }}
+        {{ product?.productDescription?.title }}
       </p>
       <p style="padding: 0; margin: 0">
-        {{ product.productDescription.brand }}
+        {{ product?.productDescription?.brand }}
       </p>
       <h4 class="card-text" style="display: inline-block">
-        {{ product.productDescription.minPrice | currency: "CAD" }}
+        {{ product?.productDescription?.minPrice | currency: "CAD" }}
         <span
           *ngIf="
-            product.productDescription.minPrice !=
-            product.productDescription.maxPrice
+            product?.productDescription?.minPrice !=
+            product?.productDescription?.maxPrice
           "
         >
-          - {{ product.productDescription.maxPrice | currency: "CAD" }}</span
+          - {{ product?.productDescription?.maxPrice | currency: "CAD" }}</span
         >
       </h4>
-      <!-- <h6 class="card-text" style="display: inline-block; vertical-align: top">
-          06
-        </h6> -->
+
+      <p class="card-text" style="margin-bottom: 0; font-weight: 500">
+        {{ product?.productDescription?.description }}
+      </p>
+
       <div>
         <b
           ><app-ps-product-card-review
-            [reviewCount]="product.productDescription.reviewCount"
-            [rating]="product.productDescription.rating"
+            [reviewCount]="product?.productDescription?.reviewCount"
+            [rating]="product?.productDescription?.rating"
           ></app-ps-product-card-review
         ></b>
       </div>
+
+      <div>
+        <span *ngFor="let stockDetails of product.stockDetailsList">
+          <input
+            type="button"
+            value="{{ stockDetails?.size }}"
+            (click)="selectSize($event)"
+          />
+        </span>
+      </div>
+
+      <div>
+        <input id="quantity" type="number" [(ngModel)]="quantity" />
+        <input type="button" value="Add to Cart" (click)="addToCart()" />
+      </div>
+
+      <div>
+        Current Price: {{ currentPrice | currency: "CAD" }} Total amount:
+        {{ currentPrice * quantity | currency: "CAD" }}
+      </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="!product">
+  <p>Sorry, The products is out of stock</p>
 </div>

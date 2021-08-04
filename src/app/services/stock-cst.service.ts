@@ -11,7 +11,7 @@ export class StockCstService {
   constructor(private http:HttpClient) { }
 
   getStocksByProductDescriptionId(id:number){
-    return this.http.get<any>('http://localhost:8090/api/stocks/productdescriptions/1/public');
+    return this.http.get<any>('http://localhost:8090/api/stocks/productdescriptions/' + id + '/public');
   }
 
 }
