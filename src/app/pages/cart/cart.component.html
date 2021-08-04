@@ -1,0 +1,33 @@
+<div class="container" *ngFor="let item of items">
+  <div class="row justify-content-lg-center">
+    <div
+      class="col col-3 col-lg-1 col-md-2 col-sm-2 col-xl-1 left"
+      style="min-width: fit-content"
+    >
+      <img
+        src="{{ item.stock.product.productDescription.image }}"
+        alt=""
+        width="125px"
+      />
+    </div>
+    <div class="col col-8 col-lg-5 col-md-7 col-sm-8 col-xl-5 right">
+      <div>
+        <b>{{ item.stock.product.productDescription.title }}</b>
+      </div>
+      <div>{{ item.stock.product.productDescription.brand }}</div>
+      <div>Size: {{ item.stock.product.size }}</div>
+      <div>Qty: {{ item.quantity }}</div>
+      <div>Subtotal: {{ item.paidSubtotal | currency }}</div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-lg-center">
+    <div class="col-lg-2">
+      <p>Total:</p>
+    </div>
+    <div class="col-lg-4">
+      <p>$150.00</p>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row bg-light">
     <div class="col-4">
-      <img src="../../../favicon.ico" alt="" />
+      <a routerLink="/"><img src="../../../favicon.ico" alt="" /></a>
       <span class="my-0 mr-md-auto font-weight-normal"> Walking Stores</span>
     </div>
     <div class="col-8">
@@ -27,7 +27,7 @@
             >Account</a
           >
           <a class="p-2 text-dark" href="#">Orders</a>
-          <a class="p-2 text-dark" href="#">Cart(1)</a>
+          <a class="p-2 text-dark" routerLink="/cart">Cart</a>
           <a
             class="p-2 text-dark"
             *ngIf="jwtService.loggedIn()"

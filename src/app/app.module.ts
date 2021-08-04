@@ -23,6 +23,7 @@ import { PsPaginationComponent } from './components/ps-pagination/ps-pagination.
 import { JwtClientService } from './services/jwt-client.service';
 import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     PsProductCardComponent,
     PsProductCardReviewComponent,
     PageNotFoundComponent,
-    PsPaginationComponent
+    PsPaginationComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
