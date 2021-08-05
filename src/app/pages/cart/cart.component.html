@@ -17,7 +17,7 @@
       <div>{{ item.stock.product.productDescription.brand }}</div>
       <div>Size: {{ item.stock.product.size }}</div>
       <div>Qty: {{ item.quantity }}</div>
-      <div>Subtotal: {{ item.paidSubtotal | currency }}</div>
+      <div>Subtotal: {{ item.paidSubtotal | currency: "CAD" }}</div>
     </div>
   </div>
 </div>
