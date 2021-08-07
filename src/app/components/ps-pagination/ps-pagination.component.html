@@ -1,17 +1,22 @@
-<div>
-  <span *ngFor="let item of pages; let i = index">
-    <!-- <a
-      [routerLink]="['/search']"
-      [queryParams]="{ page: 'i' }"
-      routerLinkActive="active"
-      >{{ i + 1 }}</a
-    > -->
-    <!-- <button (click)="goToPage($event)">{{ i + 1 }}</button> -->
-
-    <input
+<div
+  class="
+    d-flex
+    align-items-center
+    justify-content-center
+    p-1
+    mt-4
+    border-top border-secondary
+  "
+>
+  <span
+    class="border-bottom border-success mx-1"
+    *ngFor="let item of pages; let i = index"
+    ><input
+      class="btn px-2 py-0 border-0"
       type="button"
       value="{{ i + 1 }}"
       (click)="goToPage($event)"
-    /> </span
-  ><span>[page:{{ pagination.number + 1 }}]</span>
+  /></span>
+
+  <span class="btn">[page:{{ pagination.number + 1 }}]</span>
 </div>

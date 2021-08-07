@@ -1,42 +1,60 @@
-<div class="container-fluid">
-  <div class="row bg-light">
-    <div class="col-4">
-      <a routerLink="/"><img src="../../../favicon.ico" alt="" /></a>
-      <span class="my-0 mr-md-auto font-weight-normal"> Walking Stores</span>
-    </div>
-    <div class="col-8">
-      <div class="d-flex justify-content-end p-2">
-        <span *ngIf="jwtService.loggedIn()"
-          >Hello, {{ jwtService.user?.firstName }}</span
-        >
-        <nav class="my-2 my-md-0 mr-md-3">
-          <a
-            class="p-2 text-dark"
-            *ngIf="!jwtService.loggedIn()"
-            routerLink="/signin"
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark text-light pt-300">
+  <div class="container">
+    <a routerLink="/"><img src="../../../favicon.ico" alt="" /></a>
+    <a routerLink="/" class="navbar-brand">Walking Footwear</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navmenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" *ngIf="jwtService.loggedIn()">
+          <span class="nav-link text-warning"
+            >Hello, {{ jwtService.user?.firstName }}</span
+          >
+        </li>
+        <li class="nav-item active" *ngIf="!jwtService.loggedIn()">
+          <a class="nav-link" routerLink="/signin" routerLinkActive="active"
             >Login</a
           >
-          <a
-            class="p-2 text-dark"
-            *ngIf="!jwtService.loggedIn()"
-            routerLink="/register"
+        </li>
+
+        <li class="nav-item active" *ngIf="!jwtService.loggedIn()">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active"
             >Register</a
           >
+        </li>
 
-          <a class="p-2 text-dark" (click)="jwtService.logoutUser()" href="#"
+        <li class="nav-item" *ngIf="jwtService.loggedIn()">
+          <a class="nav-link" routerLink="/account" routerLinkActive="active"
             >Account</a
           >
-          <a class="p-2 text-dark" href="#">Orders</a>
-          <a class="p-2 text-dark" routerLink="/cart">Cart</a>
-          <a
-            class="p-2 text-dark"
-            *ngIf="jwtService.loggedIn()"
-            routerLink="/register"
-            (click)="jwtService.logoutUser()"
+        </li>
+
+        <li class="nav-item active" *ngIf="jwtService.loggedIn()">
+          <a class="nav-link" routerLink="/orders" routerLinkActive="active"
+            >Orders</a
+          >
+        </li>
+
+        <li class="nav-item active" *ngIf="jwtService.loggedIn()">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active"
+            >Cart</a
+          >
+        </li>
+
+        <li class="nav-item" *ngIf="jwtService.loggedIn()">
+          <a class="nav-link" (click)="jwtService.logoutUser()" routerLink="/"
             >Sign Out</a
           >
-        </nav>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
+</nav>

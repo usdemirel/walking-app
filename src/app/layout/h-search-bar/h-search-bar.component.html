@@ -1,23 +1,26 @@
-<div class="container" style="min-width: 800px">
-  <!-- <form class="col-11" [routerLink]="['/search']">
-    <tr>
-      <td class="col-8 bg-light">
-        <input
-          class="form-control mr-sm-2"
-          type="text"
-          name="title"
-          placeholder="Search"
-          aria-label="Search"
-        />
-      </td>
-      <td class="col-1 bg-light">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </td>
-    </tr>
-  </form> -->
+<section class="bg-light p-1">
+  <div class="container" style="height: 40px; max-width: 700px">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control py-0"
+        style="height: 40px"
+        placeholder="Search Walking Footwear"
+        [(ngModel)]="title"
+        (change)="onChange()"
+      />
+      <button
+        class="btn btn-outline-warning border px-2 py-0 bg-light"
+        type="button"
+        id="button-addon1"
+      >
+        <i class="bi-search" style="font-size: 1rem; color: black"></i>
+      </button>
+    </div>
+  </div>
+</section>
 
+<!-- <div class="container" style="min-width: 800px">
   <tr>
     <td class="col-8 bg-light">
       <input
@@ -35,4 +38,4 @@
       </button>
     </td>
   </tr>
-</div>
+</div> -->

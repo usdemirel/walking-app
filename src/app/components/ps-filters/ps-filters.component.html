@@ -1,30 +1,58 @@
-<input
-  type="number"
-  placeholder="min price"
-  [(ngModel)]="minPrice"
-  (blur)="filterChanged()"
-/>
-<input
-  type="number"
-  placeholder="max price"
-  [(ngModel)]="maxPrice"
-  (blur)="filterChanged()"
-/>
+<div class="card bg-secondary">
+  <div class="card-body">
+    <h6 class="border border-ligth rounded text-light bg-secondary w-100 p-2">
+      <i class="bi bi-tags"> Price Range</i>
+    </h6>
 
-<br />
-<hr />
-<br />
+    <input
+      class="
+        input
+        w-100
+        my-2
+        p-2
+        rounded
+        border-0 border-bottom border-secondary
+      "
+      type="number"
+      placeholder="Min Price"
+      [(ngModel)]="minPrice"
+      (blur)="filterChanged()"
+    />
+    <input
+      class="
+        input
+        w-100
+        mb-4
+        p-2
+        rounded
+        border-0 border-bottom border-secondary
+      "
+      type="number"
+      placeholder="Max Price"
+      [(ngModel)]="maxPrice"
+      (blur)="filterChanged()"
+    />
 
-<div *ngFor="let category of categories">
-  <input
-    type="button"
-    value="{{ category.category }}"
-    (click)="onChange($event)"
-  />
+    <h6 class="border border-ligth rounded text-light bg-secondary w-100 p-2">
+      <i class="bi bi-list-ul"></i><span class="px-2">Categories</span>
+    </h6>
+
+    <div *ngFor="let category of categories">
+      <input
+        type="button"
+        class="w-100 my-1 btn btn-light p-1"
+        value="{{ category.category }}"
+        (click)="onChange($event)"
+      />
+    </div>
+    <p class="text-light font-weight-lighter small text-center">
+      Category Selected: {{ category }}
+    </p>
+
+    <a class="btn btn-warning my-3" [routerLink]="['/products/', '']">Clear</a>
+  </div>
 </div>
-<div>Selected Category: {{ category }}</div>
 
-<a [routerLink]="['/products/', '']">Clear</a>
 <!-- 
 <br />
 <hr />
