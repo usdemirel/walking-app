@@ -1,1 +1,11 @@
+a {
+  text-decoration: none;
+  color: white;
+  font-size: small;
+  padding: 3px;
+  border-radius: 2px;
+}
 
+a:hover {
+  background-color: gray;
+}

@@ -1,22 +1,13 @@
-<div
-  class="
-    d-flex
-    align-items-center
-    justify-content-center
-    p-1
-    mt-4
-    border-top border-secondary
-  "
->
-  <span
-    class="border-bottom border-success mx-1"
-    *ngFor="let item of pages; let i = index"
-    ><input
-      class="btn px-2 py-0 border-0"
-      type="button"
-      value="{{ i + 1 }}"
-      (click)="goToPage($event)"
-  /></span>
+<div class="card p-1 mt-4 mb-5 bg-light">
+  <div class="d-flex align-items-center justify-content-center">
+    <span class="mx-1" *ngFor="let item of pages; let i = index"
+      ><input
+        class="btn btn-light px-2 py-0 border"
+        type="button"
+        value="{{ i + 1 }}"
+        (click)="goToPage($event)"
+    /></span>
 
-  <span class="btn">[page:{{ pagination.number + 1 }}]</span>
+    <span class="btn">[page:{{ pagination.number + 1 }}]</span>
+  </div>
 </div>
