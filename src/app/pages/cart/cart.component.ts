@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit {
   subTotal: number;
   @Input() showProceedtoCheckoutBtn: boolean = true;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getActiveCartItems();
@@ -39,6 +41,7 @@ export class CartComponent implements OnInit {
       console.log("deleted: "+data);
       console.log("now will get new items..");
       this.getActiveCartItems();
+      this.toastr.success("Item is deleted!")
     });
   }
 

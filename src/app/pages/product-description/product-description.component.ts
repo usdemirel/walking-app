@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { StockDto } from 'src/app/model/stock-dto';
 import { JwtClientService } from 'src/app/services/jwt-client.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -16,7 +17,7 @@ export class ProductDescriptionComponent implements OnInit, OnChanges {
  product: StockDto;
  currentPrice: number;
  chosenStockId: number;
- quantity: number=0;
+ quantity: number=1;
  
 /*
  product = {
@@ -66,7 +67,7 @@ export class ProductDescriptionComponent implements OnInit, OnChanges {
  
  
  
- constructor(private stockService: StockCstService, private route: ActivatedRoute, private orderService: OrderService, public jwtService: JwtClientService) { }
+ constructor(private stockService: StockCstService, private route: ActivatedRoute, private orderService: OrderService, public jwtService: JwtClientService, private toastr: ToastrService) { }
  
  ngOnInit(): void {
   this.route.paramMap.subscribe(param => {
@@ -116,9 +117,16 @@ export class ProductDescriptionComponent implements OnInit, OnChanges {
      order: null
    };
 
-   this.orderService.addToCart(orderItem).subscribe( item => {
+   this.orderService.addToCart(orderItem).subscribe( 
+     item => {
      console.log("item: " + item);
-   });
+     this.toastr.success("The item is added to cart!")
+    },
+    err => {
+      this.toastr.warning("Please select your size");
+    }
+   
+   );
  }
  
  // later(){
