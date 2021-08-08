@@ -10,6 +10,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class CartItemsComponent implements OnInit {
 
   @Input() item: any;
+  @Input() showProceedtoCheckoutBtn: boolean = true;
   @Output() public onDeleteItem: EventEmitter<number> = new EventEmitter();
 
   constructor(private orderService: OrderService, private router: Router) { }
@@ -20,11 +21,6 @@ export class CartItemsComponent implements OnInit {
   delete(id: number){
     console.log("id to be transmitted: "+id);
     this.onDeleteItem.emit(id);
-
-    // this.orderService.deleteCartItem(id).subscribe( data => {
-    //   console.log(data);
-    //   this.onDeleteItem.emit("deleted");
-    // });
   }
 
 }

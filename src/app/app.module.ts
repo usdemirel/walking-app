@@ -25,6 +25,7 @@ import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CartComponent } from './pages/cart/cart.component';
 import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
     PageNotFoundComponent,
     PsPaginationComponent,
     CartComponent,
-    CartItemsComponent
+    CartItemsComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

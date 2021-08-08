@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class CartComponent implements OnInit {
 
   items: any;
   subTotal: number;
+  @Input() showProceedtoCheckoutBtn: boolean = true;
 
   constructor(private orderService: OrderService) { }
 

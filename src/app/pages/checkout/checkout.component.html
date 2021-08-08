@@ -1,0 +1,46 @@
+<div class="container">
+  <h4 class="text-center p-2 border-bottom border-secondary my-3">Checkout</h4>
+
+  <div class="d-lg-flex">
+    <div class="w-55">
+      <app-cart
+        [showProceedtoCheckoutBtn]="showProceedtoCheckoutBtn"
+      ></app-cart>
+    </div>
+    <div class="w-45 my-4">
+      <div class="bg-light px-2 align-items-center rounded">
+        <button class="btn btn-warning my-3 ml-0" (click)="checkout()">
+          Place your Order
+        </button>
+      </div>
+      <div class="">
+        <h6 class="border-bottom border-secondary my-3">Order Details</h6>
+        <p>Total Before Tax: {{ order.totalBeforeTax | currency: "CAD" }}</p>
+        <p>
+          Shipping & Handling: {{ order.shippingHandling | currency: "CAD" }}
+        </p>
+        <p>
+          Estimated Tax To be Collected:
+          {{ order.estimatedTaxToBeCollected | currency: "CAD" }}
+        </p>
+        <p>
+          Grand Total:
+          <span class="text-danger fs-5 align-items-center">{{
+            order.grandTotal | currency: "CAD"
+          }}</span>
+        </p>
+      </div>
+
+      <div>
+        <h6 class="border-bottom border-secondary my-3">Address</h6>
+        <p>Addressee: {{ order.customer.address.addressee }}</p>
+        <p>{{ order.customer.address.civicAddress }}</p>
+        <p>{{ order.customer.address.municipality }}</p>
+        <p>{{ order.customer.address.province }}</p>
+        <p>{{ order.customer.address.postalCode }}</p>
+      </div>
+    </div>
+  </div>
+
+  <br /><br /><br /><br />
+</div>

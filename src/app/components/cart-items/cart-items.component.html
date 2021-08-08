@@ -1,15 +1,17 @@
 <div class="card mx-5">
   <div class="card-body">
     <div class="d-md-flex justify-content-center align-items-center">
-      <img
-        class="img-fluid rounded mx-auto mx-md-3 d-block"
-        src="{{ item.stock.product.productDescription.image }}"
-        alt=""
-        width="250px"
-      />
+      <div>
+        <img
+          class="img-fluid rounded mx-auto mx-md-3 d-block"
+          src="{{ item.stock.product.productDescription.image }}"
+          alt=""
+          width="250px"
+        />
+      </div>
 
       <div class="right px-md-5 text-center text-md-start product-details">
-        <div>
+        <div class="">
           <b>{{ item.stock.product.productDescription.title }}</b>
         </div>
         <div>{{ item.stock.product.productDescription.brand }}</div>
@@ -18,6 +20,7 @@
         <div>Subtotal: {{ item.paidSubtotal | currency: "CAD" }}</div>
 
         <button
+          *ngIf="showProceedtoCheckoutBtn"
           class="btn btn-danger btn-sm mr-2 ml-0"
           (click)="delete(item.id)"
         >
