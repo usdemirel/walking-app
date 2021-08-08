@@ -1,4 +1,4 @@
-<div class="card bg-secondary">
+<div class="card bg-light">
   <div class="card-body">
     <h6 class="border border-ligth rounded text-light bg-secondary w-100 p-2">
       <i class="bi bi-tags"> Price Range</i>
@@ -45,25 +45,21 @@
         (click)="onChange($event)"
       />
     </div>
-    <p class="text-light font-weight-lighter small text-center">
+    <p
+      class="
+        text-secondary
+        font-weight-lighter
+        small
+        text-center
+        border
+        rounded
+        border-1 border-warning
+        my-2
+      "
+    >
       Category Selected: {{ category }}
     </p>
 
     <a class="btn btn-warning my-3" [routerLink]="['/products/', '']">Clear</a>
   </div>
 </div>
-
-<!-- 
-<br />
-<hr />
-<br />
-<h5>Categories</h5>
-<ul>
-  <div *ngFor="let category of categories">
-    <li>
-      <a [routerLink]="['/products/', category.category]">{{
-        category.category
-      }}</a>
-    </li>
-  </div>
-</ul> -->

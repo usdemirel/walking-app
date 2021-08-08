@@ -1,33 +1,33 @@
-<div class="container" *ngFor="let item of items">
-  <div class="row justify-content-lg-center">
-    <div
-      class="col col-3 col-lg-1 col-md-2 col-sm-2 col-xl-1 left"
-      style="min-width: fit-content"
-    >
-      <img
-        src="{{ item.stock.product.productDescription.image }}"
-        alt=""
-        width="125px"
-      />
-    </div>
-    <div class="col col-8 col-lg-5 col-md-7 col-sm-8 col-xl-5 right">
-      <div>
-        <b>{{ item.stock.product.productDescription.title }}</b>
-      </div>
-      <div>{{ item.stock.product.productDescription.brand }}</div>
-      <div>Size: {{ item.stock.product.size }}</div>
-      <div>Qty: {{ item.quantity }}</div>
-      <div>Subtotal: {{ item.paidSubtotal | currency: "CAD" }}</div>
-    </div>
-  </div>
-</div>
 <div class="container">
-  <div class="row justify-content-lg-center">
-    <div class="col-lg-2">
-      <p>Total:</p>
-    </div>
-    <div class="col-lg-4">
-      <p>$150.00</p>
+  <h4 class="text-center p-2 border-bottom border-secondary my-3">
+    Shopping Cart
+  </h4>
+
+  <div class="my-1">
+    <app-cart-items
+      (onDeleteItem)="deleteItem($event)"
+      [item]="item"
+      *ngFor="let item of items"
+    ></app-cart-items>
+  </div>
+
+  <div class="card mx-5" *ngIf="subTotal">
+    <div class="card-body">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="right px-md-5 text-center text-md-start">
+          <h6 class="m-2">
+            <i class="bi bi-wallet2"></i> Subtotal:
+            <span class="lead">{{ subTotal | currency: "CAD" }}</span>
+          </h6>
+        </div>
+        <button class="btn btn-success mr-2 ml-0">Proceed to Checkout</button>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="card mx-5 text-center border-0 lead text-danger" *ngIf="!subTotal">
+  <p>The cart is empty!</p>
+</div>
+
+<div><br /><br /><br /></div>

@@ -19,5 +19,10 @@ export class OrderService {
   return result;
 }
 
+deleteCartItem(id:any){
+  let result = this.http.delete<any>("http://localhost:8090/api/orderitems/"+id);
+  return result;
+}
+
 
 }

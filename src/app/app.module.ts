@@ -24,6 +24,7 @@ import { JwtClientService } from './services/jwt-client.service';
 import { AuthGuard } from './services/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CartComponent } from './pages/cart/cart.component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CartComponent } from './pages/cart/cart.component';
     PsProductCardReviewComponent,
     PageNotFoundComponent,
     PsPaginationComponent,
-    CartComponent
+    CartComponent,
+    CartItemsComponent
   ],
   imports: [
     BrowserModule,
