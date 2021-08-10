@@ -1,0 +1,15 @@
+form {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+form {
+  background-color: rgb(253, 253, 253);
+}
+
+option {
+  padding: 5px;
+  margin: 2px;
+}

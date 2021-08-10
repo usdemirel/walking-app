@@ -1,0 +1,156 @@
+<p>profile works!</p>
+
+<h5>Account Details</h5>
+<ul *ngIf="user">
+  <li>{{ user.firstName }}</li>
+  <li>{{ user.lastName }}</li>
+  <li>{{ user.email }}</li>
+  <li>{{ user.phone }}</li>
+</ul>
+
+<h5>Address Details</h5>
+<ul *ngIf="user?.address">
+  <li>{{ user.address.addressee }}</li>
+  <li>{{ user.address.civicAddress }}</li>
+  <li>{{ user.address.municipality }}</li>
+  <li>{{ user.address.province }}</li>
+  <li>{{ user.address.postalCode }}</li>
+</ul>
+
+<div *ngIf="user?.address">
+  <button class="p-1 rounded"><i class="bi bi-plus-square h1"></i></button>
+</div>
+
+<button
+  class="btn btn-primary btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#enroll"
+>
+  <i class="bi bi-plus-square fs-6"> Add Address</i>
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="enroll"
+  tabindex="-1"
+  aria-labelledby="enrollLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enrollLabel">Address</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Please enter your address</p>
+        <!-- address form -->
+        <div class="text-center" id="addressform">
+          <main class="form-address">
+            <form class="">
+              <div class="form-floating mb-2">
+                <input
+                  [(ngModel)]="addressData.addressee"
+                  name="addressee"
+                  type="text"
+                  class="form-control"
+                  id="floatingInput"
+                  placeholder="Address"
+                />
+                <label for="floatingInput">Addressee</label>
+              </div>
+              <div class="form-floating mb-2">
+                <input
+                  [(ngModel)]="addressData.civicAddress"
+                  name="civicAddress"
+                  type="text"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Address"
+                />
+                <label for="floatingPassword">Civic Address</label>
+              </div>
+
+              <div class="form-floating mb-2">
+                <input
+                  [(ngModel)]="addressData.municipality"
+                  name="municipality"
+                  type="text"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Address"
+                />
+                <label for="floatingPassword">Municipality</label>
+              </div>
+
+              <p
+                for="floatingPassword"
+                class="lead py-2 text-small text-start pb-0 mb-0"
+              >
+                Province:
+              </p>
+
+              <div
+                class="
+                  form-floating
+                  d-flex
+                  mb-4
+                  align-items-center
+                  justify-content-center
+                "
+              >
+                <div class="w-100">
+                  <select
+                    name="province"
+                    class="
+                      p-2
+                      bg-secondary
+                      text-light
+                      lead
+                      border border-light
+                      rounded
+                      w-100
+                    "
+                    [(ngModel)]="addressData.province"
+                  >
+                    <option class="lead py-1 text-small" value="ON">
+                      Ontario
+                    </option>
+                    <option class="lead text-small" value="QC">Quebec</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-floating mb-4">
+                <input
+                  [(ngModel)]="addressData.postalCode"
+                  name="postalCode"
+                  type="text"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Address"
+                />
+                <label for="floatingPassword">Postal Code</label>
+              </div>
+
+              <button
+                class="w-100 btn btn-lg btn-warning my-2"
+                (click)="addAddress()"
+                data-bs-dismiss="modal"
+                type="submit"
+              >
+                <span class="lead"> Add </span>
+              </button>
+            </form>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

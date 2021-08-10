@@ -5,6 +5,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ProductDescriptionComponent } from './pages/product-description/product-description.component';
 import { ProductSearchComponent } from './pages/product-search/product-search.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AuthGuard } from './services/auth.guard';
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: SignupComponent
+  },
+  {
+    path:"account",
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'cart',
