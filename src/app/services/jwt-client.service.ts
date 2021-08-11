@@ -48,5 +48,13 @@ export class JwtClientService {
     this.router.navigate(['/signin']);
   }
 
+  registerCustomer(user:any){
+    user.role = "CUSTOMER";
+    user.branch = null;
+    user.active = false;
+    user.address = null;
+    return this.http.post<User>("http://localhost:8090/api/customers/signup",user);
+  }
+
 
 }
