@@ -17,13 +17,19 @@ export class CheckoutComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
   }
 
   retrieveCheckoutDetails(){
-    this.orderService.retrieveCheckoutDetails().subscribe(order => {
+    this.orderService.retrieveCheckoutDetails().subscribe(
+      order => {
       console.log("order " + order);
       this.order = order;
+    },
+    err => {
+      if(err.status == 412){
+        this.toastr.error("Please add your address to your profile to proceed to checkout!");
+        this.router.navigateByUrl("/account");
+      }
     })
   }
 
@@ -40,6 +46,4 @@ export class CheckoutComponent implements OnInit {
         this.toastr.error("An error occured!");
       })
   }
-
-
 }

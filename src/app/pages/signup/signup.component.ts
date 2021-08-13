@@ -33,8 +33,12 @@ export class SignupComponent implements OnInit {
       this.toastr.success("Registration is successfull");
     },
     err => {
-      console.log('error: ' + err );
-      this.toastr.error("An error occured: " + err);
+      console.log('error: ' + err.status );
+      if(err.status == 409){
+        this.toastr.error("An error occured: User already exist with the given email id");
+      }else{
+        this.toastr.error("An error occured: " + err);
+      }
     });
   }
 

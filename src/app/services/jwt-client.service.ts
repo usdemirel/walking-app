@@ -20,13 +20,17 @@ export class JwtClientService {
 
   public getUserDetails(){
     this.http.get<User>("http://localhost:8090/api/token/getuserdetails").subscribe( user => {
-      console.log("User Logged in -----> " + user);
+      console.log("User Logged in -----> " + user.email);
       this.user = user;
     },
     err => {
       console.log('error: ' + err.status );
       this.logoutUser();
     });
+  }
+
+  public retrieveUserDetails(){
+    return this.http.get<User>("http://localhost:8090/api/token/getuserdetails");
   }
   
   public welcome(token: string){
@@ -54,6 +58,10 @@ export class JwtClientService {
     user.active = false;
     user.address = null;
     return this.http.post<User>("http://localhost:8090/api/customers/signup",user);
+  }
+
+  addAddress(address){
+    return this.http.post<User>("http://localhost:8090/api/customers/address",address);
   }
 
 
