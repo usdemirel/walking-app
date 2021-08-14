@@ -1,0 +1,56 @@
+<a (click)="toggleCategoryForm()" class="btn btn-dark mt-3"
+  ><i class="bi bi-file-earmark-plus">New Category</i></a
+>
+
+<form class="mt-3 col-md-6" *ngIf="formActive">
+  <!-- <h4 class="h3 mb-3 fw-normal">Add Category</h4> -->
+
+  <div class="form-floating">
+    <input
+      [(ngModel)]="categoryData.category"
+      name="category"
+      type="text"
+      class="form-control"
+      id="floatingCategory"
+    />
+    <label for="floatingCategory">Category</label>
+  </div>
+  <div class="form-floating">
+    <input
+      [(ngModel)]="categoryData.image"
+      name="image"
+      type="text"
+      class="form-control"
+      id="floatingImage"
+    />
+    <label for="floatingImage">Image</label>
+  </div>
+
+  <div class="checkbox mb-3"></div>
+  <button class="btn btn-warning" (click)="saveCategory()" type="submit">
+    Save
+  </button>
+</form>
+
+<div class="container mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">Image</th>
+        <th scope="col">Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <th scope="row">{{ category.id }}</th>
+        <td>{{ category.category }}</td>
+        <td>{{ category.image }}</td>
+        <td>{{ category.active }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div><br /><br /><br /></div>

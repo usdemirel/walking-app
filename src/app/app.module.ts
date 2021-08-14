@@ -29,6 +29,7 @@ import { CartItemsComponent } from './components/cart-items/cart-items.component
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { AdminConsoleComponent } from './pages/admin-console/admin-console.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     CartItemsComponent,
     CheckoutComponent,
     AdminConsoleComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminCategoriesComponent
   ],
   imports: [
     BrowserModule,
