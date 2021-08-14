@@ -16,7 +16,9 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item" *ngIf="jwtService.loggedIn()">
           <span class="nav-link text-warning"
-            >Hello, {{ jwtService.user?.firstName }}</span
+            >Hello, {{ jwtService.user?.firstName }} [{{
+              jwtService.role
+            }}]</span
           >
         </li>
         <li class="nav-item active" *ngIf="!jwtService.loggedIn()">
@@ -37,13 +39,31 @@
           >
         </li>
 
-        <li class="nav-item active" *ngIf="jwtService.loggedIn()">
+        <li
+          class="nav-item active"
+          *ngIf="jwtService.role == 'MANAGER' || jwtService.role == 'OWNER'"
+        >
+          <a
+            class="nav-link"
+            routerLink="/admin-console"
+            routerLinkActive="active"
+            >Admin Console</a
+          >
+        </li>
+
+        <li
+          class="nav-item active"
+          *ngIf="jwtService.loggedIn() && jwtService.role == 'CUSTOMER'"
+        >
           <a class="nav-link" routerLink="/orders" routerLinkActive="active"
             >Orders</a
           >
         </li>
 
-        <li class="nav-item active" *ngIf="jwtService.loggedIn()">
+        <li
+          class="nav-item active"
+          *ngIf="jwtService.loggedIn() && jwtService.role == 'CUSTOMER'"
+        >
           <a class="nav-link" routerLink="/cart" routerLinkActive="active"
             >Cart</a
           >

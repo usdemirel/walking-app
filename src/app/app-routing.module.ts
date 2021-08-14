@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminConsoleComponent } from './pages/admin-console/admin-console.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path:"account",
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin-console',
+    component: AdminConsoleComponent,
     canActivate: [AuthGuard]
   },
   {

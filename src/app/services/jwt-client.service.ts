@@ -9,6 +9,7 @@ import { User } from '../model/user';
 export class JwtClientService {
 
   user:User;
+  role:string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -22,6 +23,7 @@ export class JwtClientService {
     this.http.get<User>("http://localhost:8090/api/token/getuserdetails").subscribe( user => {
       console.log("User Logged in -----> " + user.email);
       this.user = user;
+      this.role = user.role;
     },
     err => {
       console.log('error: ' + err.status );

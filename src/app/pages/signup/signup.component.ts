@@ -31,14 +31,12 @@ export class SignupComponent implements OnInit {
       console.log("Registered -----> " + user);
       this.router.navigateByUrl("/signin");
       this.toastr.success("Registration is successfull");
+      this.toastr.success("Please signin to continue.");
+
     },
     err => {
       console.log('error: ' + err.status );
-      if(err.status == 409){
-        this.toastr.error("An error occured: User already exist with the given email id");
-      }else{
-        this.toastr.error("An error occured: " + err);
-      }
+      this.toastr.error(err.error?.message);
     });
   }
 

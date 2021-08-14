@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+a {
+  width: 150px;
+  max-height: 140px;
+  text-decoration: none;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  text-justify: newspaper;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  margin: 5px;
+  font-family: "Roboto", sans-serif;
+  padding: 40px 5px 60px 5px;
+}
+
+a:hover {
+  background-color: orange;
+  color: white;
+}
