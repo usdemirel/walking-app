@@ -1,17 +1,20 @@
-<div *ngIf="product" class="container">
-  <div class="d-flex flex-row">
+<div *ngIf="product" class="container my-3">
+  <div class="d-lg-flex flex-row">
     <div class="p-2 image">
       <img width="100%" src="{{ product?.productDescription?.image }}" />
     </div>
 
     <div class="p-2">
-      <p class="card-text" style="margin-bottom: 0; font-weight: 500">
+      <h4 class="border-bottom border-secondary pb-3">
         {{ product?.productDescription?.title }}
-      </p>
-      <p style="padding: 0; margin: 0">
+      </h4>
+      <p class="lead p-0">
         {{ product?.productDescription?.brand }}
       </p>
-      <h4 class="card-text" style="display: inline-block">
+      <h4
+        class="card-text border border-secondary rounded p-2"
+        style="display: inline-block"
+      >
         {{ product?.productDescription?.minPrice | currency: "CAD" }}
         <span
           *ngIf="
@@ -23,38 +26,84 @@
         >
       </h4>
 
-      <p class="card-text" style="margin-bottom: 0; font-weight: 500">
+      <div class="mb-2">
+        <app-ps-product-card-review
+          [reviewCount]="product?.productDescription?.reviewCount"
+          [rating]="product?.productDescription?.rating"
+        ></app-ps-product-card-review>
+      </div>
+
+      <p class="card-text lead">
         {{ product?.productDescription?.description }}
       </p>
 
-      <div>
-        <b
-          ><app-ps-product-card-review
-            [reviewCount]="product?.productDescription?.reviewCount"
-            [rating]="product?.productDescription?.rating"
-          ></app-ps-product-card-review
-        ></b>
-      </div>
+      <p class="card-text">Select size:</p>
 
-      <div>
+      <div class="my-2">
         <span *ngFor="let stockDetails of product.stockDetailsList">
           <input
             type="button"
+            class="btn border border-1 lead"
+            [style.font-weight]="stockDetails.selected ? '700' : '400'"
             value="{{ stockDetails?.size }}"
             (click)="selectSize($event)"
           />
         </span>
       </div>
 
-      <div>
-        <input id="quantity" type="number" [(ngModel)]="quantity" />
-        <input type="button" value="Add to Cart" (click)="addToCart()" />
-      </div>
+      <p class="card-text">Quantity:</p>
 
       <div>
-        <p>Current Price: {{ currentPrice | currency: "CAD" }}</p>
-        <p>Total amount: {{ currentPrice * quantity | currency: "CAD" }}</p>
+        <input
+          class="border rounded py-1 text-center"
+          id="quantity"
+          type="number"
+          [(ngModel)]="quantity"
+        />
+        <input
+          class="btn btn-warning"
+          type="button"
+          value="Add to Cart"
+          (click)="addToCart()"
+        />
       </div>
+
+      <div
+        *ngIf="addedToCart"
+        class="d-grid col-auto my-2 border-bottom border-secondary"
+      >
+        <span class="small">Item is added to Cart!</span>
+      </div>
+
+      <div *ngIf="chosenStockId && !addedToCart" class="container">
+        <p class="card-text mt-3 mb-0 text-reset">Summary:</p>
+
+        <div class="col-md-auto py-1">
+          <span class="text-secondary lead my-1">Price: </span
+          >{{ currentPrice | currency: "CAD" }}
+        </div>
+        <div class="col-md-auto py-1">
+          <span class="text-secondary lead my-1">Total: </span>
+          {{ currentPrice * quantity | currency: "CAD" }}
+        </div>
+      </div>
+
+      <div *ngIf="addedToCart" class="d-grid col-md-6">
+        <a class="btn btn-secondary btn-lg" routerLink="/cart">Go to Cart</a>
+      </div>
+
+      <!-- <div *ngIf="chosenStockId" class="container my-2 lead">
+        <div class="row justify-content-md-start">
+          <div class="col-md-auto">
+            Price: {{ currentPrice | currency: "CAD" }}
+          </div>
+        </div>
+        <div class="row justify-content-md-start">
+          <div class="col-md-auto">
+            Total: {{ currentPrice * quantity | currency: "CAD" }}
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -62,3 +111,5 @@
 <div *ngIf="!product">
   <p>Sorry, The products is out of stock</p>
 </div>
+
+<div><br /><br /><br /></div>

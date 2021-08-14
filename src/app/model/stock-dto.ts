@@ -37,6 +37,7 @@ export class StockDto {
                     active : boolean;
                } ;
                 size : number;
+                selected?: boolean;
                 maxOrderQuantity : number;
            }[];
 }

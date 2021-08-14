@@ -18,6 +18,7 @@ export class ProductDescriptionComponent implements OnInit, OnChanges {
  currentPrice: number;
  chosenStockId: number;
  quantity: number=1;
+ addedToCart: boolean;
  
 /*
  product = {
@@ -98,6 +99,9 @@ export class ProductDescriptionComponent implements OnInit, OnChanges {
      if(size == stockDetails.size){
        this.currentPrice = stockDetails.price;
        this.chosenStockId = stockDetails.id;
+       stockDetails.selected=true;
+     }else{
+       stockDetails.selected=false;
      }
    }
  };
@@ -120,7 +124,10 @@ export class ProductDescriptionComponent implements OnInit, OnChanges {
    this.orderService.addToCart(orderItem).subscribe( 
      item => {
      console.log("item: " + item);
-     this.toastr.success("The item is added to cart!")
+     this.addedToCart = true;
+     
+     this.toastr.success("The item is added to cart!");
+
     },
     err => {
       this.toastr.warning("Please select your size");
