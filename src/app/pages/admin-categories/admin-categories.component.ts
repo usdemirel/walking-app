@@ -29,6 +29,13 @@ export class AdminCategoriesComponent implements OnInit {
     });
   }
 
+  toggleActive(id: number){
+    this.categoryService.toggleActive(id).subscribe(data => {
+      console.log("category saved: " + data.active);
+      this.retrieveCategories();
+    })
+  }
+
   saveCategory(){
     console.log(this.categoryData);
     this.categoryService.saveCategory(this.categoryData).subscribe(

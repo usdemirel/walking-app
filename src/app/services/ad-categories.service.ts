@@ -18,6 +18,8 @@ export class AdCategoriesService {
     return result;
   }
 
-
+  toggleActive(id: number){
+    return this.http.get<any>("http://localhost:8090/api/categories/active/toggle/"+id);
+  }
 
 }

@@ -40,6 +40,7 @@
         <th scope="col">Category</th>
         <th scope="col">Image</th>
         <th scope="col">Active</th>
+        <th scope="col">ActiveT</th>
       </tr>
     </thead>
     <tbody>
@@ -48,6 +49,22 @@
         <td>{{ category.category }}</td>
         <td>{{ category.image }}</td>
         <td>{{ category.active }}</td>
+        <td>
+          <button
+            *ngIf="category.active"
+            class="toggle"
+            (click)="toggleActive(category.id)"
+          >
+            <i class="h3 text-success bi bi-toggle-on rounded"></i>
+          </button>
+          <button
+            *ngIf="!category.active"
+            class="toggle"
+            (click)="toggleActive(category.id)"
+          >
+            <i class="h3 text-danger bi bi-toggle-off"></i>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
