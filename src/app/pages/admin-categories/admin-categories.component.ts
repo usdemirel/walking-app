@@ -12,8 +12,10 @@ export class AdminCategoriesComponent implements OnInit {
 
   categories: any;
   categoryData: {
+    id?: number
     category?: string;
     image?: string;
+    active?: boolean;
   }= {};
   formActive: boolean = false;
 
@@ -56,6 +58,12 @@ export class AdminCategoriesComponent implements OnInit {
 
   toggleCategoryForm(){
     this.formActive = !this.formActive;
+  }
+
+  updateCategory(category: Categories){
+    console.log(category)
+    this.categoryData = category;
+    this.formActive = true;
   }
 
 }
